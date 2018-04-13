@@ -1,4 +1,4 @@
-
+//needs pins to assign to sensor inputs, named N, S, E , W for north east south west
 void setup() {
   // put your setup code here, to run once:
 
@@ -11,17 +11,20 @@ void loop() {
 void find()
 {
  
-  if(analogRead(E) > analogRead(W))
-     while(analogRead(N) <= analogRead(W) && analogRead(N) <= analogRead(E) && analogRead(N) <= analogRead(S)/*E and W are not almost the same*/)
-      {//rotate right
+  if(digitalRead(N) == HIGH)
+    return;
+    
+  else if(digitalRead(E) == HIGH)
+     while(digitalRead(N) == LOW)
+      {//rotate right (clockwise)
         
       }
   else
-     while(analogRead(N) <= analogRead(W) && analogRead(N) <= analogRead(E) && analogRead(N) <= analogRead(S)/*E and W are not almost the same*/)
+     while(digitalRead(N) == LOW)
       {//rotate left
         
       }
 
- 
+   return;
 }
 
