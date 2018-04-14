@@ -46,8 +46,8 @@ const int POT = 0;
 //}
 
 //moves motor forward
- void forward(int rate)
- {
+void forward(int rate)
+{
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, HIGH); //sets motor controls to correct direction
@@ -56,11 +56,11 @@ const int POT = 0;
     digitalWrite(MCB2, LOW);
     analogWrite(ENA, rate); //writes velocity to enable pin
     analogWrite(ENB, rate); //writes velocity to enable pin
-  }
+}
 
 //moves motor backwards 
- void backward(int rate)
- {
+void backward(int rate)
+{
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, LOW); //sets motor controls to correct direction
@@ -69,9 +69,10 @@ const int POT = 0;
     digitalWrite(MCB2, HIGH);
     analogWrite(ENA, rate); //writes velocity to enable pin
     analogWrite(ENB, rate);
-  }
+}
+
 void right(int rate) //rotates rover to the right
- {
+{
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, HIGH); //sets motor A forward
@@ -80,9 +81,10 @@ void right(int rate) //rotates rover to the right
     digitalWrite(MCB2, HIGH);
     analogWrite(ENA, rate); //writes velocity to enable pins
     analogWrite(ENB, rate);
-  }
- void left(int rate)
- {
+}
+
+void left(int rate)
+{
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, LOW); //sets motor A backward
@@ -91,11 +93,11 @@ void right(int rate) //rotates rover to the right
     digitalWrite(MCB2, LOW);
     analogWrite(ENA, rate); //writes velocity to enable pins
     analogWrite(ENB, rate);
-  }
+}
 
 //stops motor by setting motor controls to low
-  void brake()
- {
+void brake()
+{
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, LOW); 
@@ -104,7 +106,7 @@ void right(int rate) //rotates rover to the right
     digitalWrite(MCB2, LOW);
     digitalWrite(ENA, HIGH);
     digitalWrite(ENB, HIGH);
-  }
+}
 
 
 

@@ -24,7 +24,7 @@
 //Serial.println(inputVal);
 //  
 //}
-void avoid(int, int);
+//void avoid(int, int); //no need for function prototypes
 //sectors go from left to right. So 0 is far left, 4 is far right
 
 void avoid(int sector, int rate)

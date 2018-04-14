@@ -1,4 +1,6 @@
 void setup() {
+  Serial.begin(9600);  //not used on mobile rover, but could be used for debuging
+  
   setupRemoteControl();
   setupFollowWall();
   setupFindBeacon();
@@ -13,17 +15,6 @@ void loop() {
   findBeacon();     //you get the idea
   
   while(1);         //delays forever, the program is over
-}
-
-
-void setupRemoteControl(){
-  //these functions handle the setup of variables, pins, etc, that each corresponding function will use
-}
-
-void remoteControl(){
-  //each function does its task, but is able to call some functions usefell to all
-  //parts of the code, such as something to make the motors move (such as below)
-  forward(255);
 }
 
 
