@@ -4,6 +4,8 @@ void setup() {
   setupRemoteControl();
   setupFollowWall();
   setupFindBeacon();
+  setupVictoryMusic();
+
 }
 
 void loop() {
@@ -13,6 +15,8 @@ void loop() {
   remoteControl();  //function will do everything for remote control and return when remote control portion is over
   followWall();     //does all wall following, returns when finished
   findBeacon();     //you get the idea
+
+  playVictoryMusic();
   
   while(1);         //delays forever, the program is over
 }
