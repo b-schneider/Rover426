@@ -1,7 +1,7 @@
 //needs pins to assign to sensor inputs, named N, S, E , W for north east south west
 void setup() {
   // put your setup code here, to run once:
-
+  
 }
 
 void loop() {

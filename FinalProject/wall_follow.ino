@@ -8,7 +8,7 @@ void setup() {
 void loop() {
   static int state = 0;  //detects what part of course rover is on
   static int distance; //variable to store reading from IR sensor
-  static int vel; //variable to store rate of motion
+  static int vel; //variable to store rate of motion, NEEDS TO BE INITALIZED BEFORE USE
   while(state == 1)
   {
     if(distance > 22)

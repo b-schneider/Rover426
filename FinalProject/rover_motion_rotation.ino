@@ -45,6 +45,7 @@ void loop() {
 }
 
 //moves motor forward
+//what is the range of rate?
  void forward(int rate)
  {
     digitalWrite(ENA, LOW); //stops old enable pin signal
