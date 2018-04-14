@@ -31,9 +31,6 @@ void setupFollowWall(){
   
 }
 
-void followWall(){
-  
-}
 
 
 void setupFindBeacon(){

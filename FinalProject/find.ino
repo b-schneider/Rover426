@@ -1,13 +1,7 @@
-//needs pins to assign to sensor inputs, named N, S, E , W for north east south west
-void setup() {
-  // put your setup code here, to run once:
-  
-}
+//set pins to sensor outputs, named N, S, E , W for north east south west
+int N, E, S, W;
 
-void loop() {
-  // put your main code here, to run repeatedly:
 
-}
 void find()
 {
  

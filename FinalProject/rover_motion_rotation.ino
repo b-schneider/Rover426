@@ -8,52 +8,52 @@ const int MCB1 = 5;
 const int MCB2 = 4;
 const int POT = 0;
 
-//initialize variables used
-int val = 0;
-int velocity = 0;
 
-void setup() {
-  //set pins used to control circuit to output
-  pinMode(ENA, OUTPUT);
-  pinMode(ENB, OUTPUT);
-  pinMode(MCA1, OUTPUT);
-  pinMode(MCA2, OUTPUT);
-  pinMode(MCB1, OUTPUT);
-  pinMode(MCB2, OUTPUT);
-  brake(); //start running the code with the motor stopped
-}
 
-void loop() {
-   val = analogRead(POT); //get value from potentiometer
 
-  if(val > 562) //if pot is high, motor goes forward
-  {
-    velocity = map(val, 563, 1023, 0, 255); //convert pot signal to PWM signal
-    forward(velocity); //send velocity to H - bridge 
-  }
+  //setup for main
+//  pinMode(ENA, OUTPUT);
+//  pinMode(ENB, OUTPUT);
+//  pinMode(MCA1, OUTPUT);
+//  pinMode(MCA2, OUTPUT);
+//  pinMode(MCB1, OUTPUT);
+//  pinMode(MCB2, OUTPUT);
+ // brake(); //start running the code with the motor stopped
 
-  else if(val < 462) //if pot is low, motor goes backward
-  { 
-    velocity = map(val, 461, 0, 0, 255);  //convert pot signal to PWM signal
-    backward(velocity); //send velocity to H - bridge
-  }
-
-  else //if pot is in the middle, stop motor
-  {
-    brake(); //stop the motor
-  }
-}
+//loop to test code
+////initialize variables used
+//int val = 0;
+//int velocity = 0;
+//void loop() {
+//   val = analogRead(POT); //get value from potentiometer
+//
+//  if(val > 562) //if pot is high, motor goes forward
+//  {
+//    velocity = map(val, 563, 1023, 0, 255); //convert pot signal to PWM signal
+//    forward(velocity); //send velocity to H - bridge 
+//  }
+//
+//  else if(val < 462) //if pot is low, motor goes backward
+//  { 
+//    velocity = map(val, 461, 0, 0, 255);  //convert pot signal to PWM signal
+//    backward(velocity); //send velocity to H - bridge
+//  }
+//
+//  else //if pot is in the middle, stop motor
+//  {
+//    brake(); //stop the motor
+//  }
+//}
 
 //moves motor forward
-//what is the range of rate?
  void forward(int rate)
  {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MC1A, HIGH); //sets motor controls to correct direction
-    digitalWrite(MC2A, LOW);
-    digitalWrite(MC1B, HIGH); //sets motor controls to correct direction
-    digitalWrite(MC2B, LOW);
+    digitalWrite(MCA1, HIGH); //sets motor controls to correct direction
+    digitalWrite(MCA2, LOW);
+    digitalWrite(MCB1, HIGH); //sets motor controls to correct direction
+    digitalWrite(MCB2, LOW);
     analogWrite(ENA, rate); //writes velocity to enable pin
     analogWrite(ENB, rate); //writes velocity to enable pin
   }
@@ -63,10 +63,10 @@ void loop() {
  {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MC1A, LOW); //sets motor controls to correct direction
-    digitalWrite(MC2A, HIGH);
-    digitalWrite(MC1B, LOW); //sets motor controls to correct direction
-    digitalWrite(MC2B, HIGH);
+    digitalWrite(MCA1, LOW); //sets motor controls to correct direction
+    digitalWrite(MCA2, HIGH);
+    digitalWrite(MCB1, LOW); //sets motor controls to correct direction
+    digitalWrite(MCB2, HIGH);
     analogWrite(ENA, rate); //writes velocity to enable pin
     analogWrite(ENB, rate);
   }
@@ -74,10 +74,10 @@ void right(int rate) //rotates rover to the right
  {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MC1A, HIGH); //sets motor A forward
-    digitalWrite(MC2A, LOW);
-    digitalWrite(MC1B, LOW); //sets motor B backward
-    digitalWrite(MC2B, HIGH);
+    digitalWrite(MCA1, HIGH); //sets motor A forward
+    digitalWrite(MCA2, LOW);
+    digitalWrite(MCB1, LOW); //sets motor B backward
+    digitalWrite(MCB2, HIGH);
     analogWrite(ENA, rate); //writes velocity to enable pins
     analogWrite(ENB, rate);
   }
@@ -85,10 +85,10 @@ void right(int rate) //rotates rover to the right
  {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MC1A, LOW); //sets motor A backward
-    digitalWrite(MC2A, HIGH);
-    digitalWrite(MC1B, HIGH); //sets motor B forward
-    digitalWrite(MC2B, LOW);
+    digitalWrite(MCA1, LOW); //sets motor A backward
+    digitalWrite(MCA2, HIGH);
+    digitalWrite(MCB1, HIGH); //sets motor B forward
+    digitalWrite(MCB2, LOW);
     analogWrite(ENA, rate); //writes velocity to enable pins
     analogWrite(ENB, rate);
   }
@@ -98,10 +98,10 @@ void right(int rate) //rotates rover to the right
  {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MC1A, LOW); 
-    digitalWrite(MC2A, LOW);
-    digitalWrite(MC1B, LOW); 
-    digitalWrite(MC2B, LOW);
+    digitalWrite(MCA1, LOW); 
+    digitalWrite(MCA2, LOW);
+    digitalWrite(MCB1, LOW); 
+    digitalWrite(MCB2, LOW);
     digitalWrite(ENA, HIGH);
     digitalWrite(ENB, HIGH);
   }
