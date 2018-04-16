@@ -7,23 +7,23 @@ void setupVictoryMusic(){
 }
 
 void playVictoryMusic(){
-  uint8_t numNotes = 8;  //total number of notes to play
-  uint8_t BPM = 60;  //speed of song, in beats/ minute
+  uint8_t numNotes = 9;  //total number of notes to play
+  uint8_t BPM = 140;  //speed of song, in beats/ minute
   
   //notes to be played, in order
   int melody[] = {
-  NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4
+  NOTE_A5, NOTE_A5, NOTE_A5, NOTE_A5, NOTE_F4, NOTE_G4, NOTE_A5, NOTE_G4, 
   };
 
   // note durations: 4 = quarter note, 8 = eighth note, etc.:
   int noteDurations[] = {
-    4, 8, 8, 4, 4, 4, 4, 4
+    12, 12, 12, 4, 4, 4, 16/3, 16, 2
   };
   
   //loop through and play each note
   Serial.println("PLaying");
   for (int thisNote = 0; thisNote < numNotes; thisNote++) {
-    int noteDuration = 60000 / (noteDurations[thisNote]*BPM);
+    int noteDuration = 60000. / (noteDurations[thisNote]*BPM);
     Serial.println(noteDurations[thisNote]);
     NewTone(victoryMusicPin, melody[thisNote], noteDuration);
   

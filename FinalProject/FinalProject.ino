@@ -16,7 +16,10 @@ void loop() {
 //  followWall();     //does all wall following, returns when finished
 //  findBeacon();     //you get the idea
 
-  playVictoryMusic();
+  while(1){
+    playVictoryMusic();
+    delay(500);
+  }
   
   while(1);         //delays forever, the program is over
 }
