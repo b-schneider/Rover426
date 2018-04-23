@@ -1,23 +1,33 @@
 //set enable, motor controls, and potentiometer pins
 //Motor A is on the left, motor B is on the right
-const int ENA = 9;
-const int ENB = 10;
-const int MCA1 = 3;
-const int MCA2 = 2;
-const int MCB1 = 5;
-const int MCB2 = 4;
-const int POT = 0;
+const int ENA = 10;
+const int ENB = 9;
+const int MCA1 = 6;
+const int MCA2 = 5;
+const int MCB1 = 4;
+const int MCB2 = 7;
 
-
+void setUpRoverMotionRotation(){
 
 
   //setup for main
-//  pinMode(ENA, OUTPUT);
-//  pinMode(ENB, OUTPUT);
-//  pinMode(MCA1, OUTPUT);
-//  pinMode(MCA2, OUTPUT);
-//  pinMode(MCB1, OUTPUT);
-//  pinMode(MCB2, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+  pinMode(MCA1, OUTPUT);
+  pinMode(MCA2, OUTPUT);
+  pinMode(MCB1, OUTPUT);
+  pinMode(MCB2, OUTPUT);
+
+  brake();
+  
+  Serial.println("ROVER SET UP");
+}
+//const int POT = 0;
+
+
+
+
+
  // brake(); //start running the code with the motor stopped
 
 //loop to test code
@@ -71,7 +81,7 @@ void backward(int rate)
     analogWrite(ENB, rate);
 }
 
-void right(int rate) //rotates rover to the right
+void left(int rate) //rotates rover to the right
 {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
@@ -83,7 +93,7 @@ void right(int rate) //rotates rover to the right
     analogWrite(ENB, rate);
 }
 
-void left(int rate)
+void right(int rate)
 {
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal

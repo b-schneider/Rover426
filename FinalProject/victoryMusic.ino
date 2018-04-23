@@ -1,4 +1,4 @@
-#define victoryMusicPin 3 //can be set to any pin
+#define victoryMusicPin 11 //can be set to any pin
 #include "pitches.h"
 #include "NewTone.h"  //must use this instead of default tone library to avoid
                       //timer usage conflict with IR detection library
