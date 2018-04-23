@@ -25,7 +25,6 @@ void setupRemoteControl(){
 }
 
 void remoteControl(){
-  backward(255);
   unsigned long depressedBTN = 0;
   unsigned long lastBTNtime = 0;
   while(depressedBTN != BTN1){  //loop until power button (BTN1) is pressed
@@ -92,15 +91,13 @@ void remoteControl(){
         Serial.print("UNRECOGNIVED CODE(");
         Serial.print(depressedBTN);
         Serial.println(")\n");
-        //brake();
         depressedBTN = 0;           //do I need this?
       }
       myReceiver.enableIRIn();      //Restart receiver to be able to receive next code
-    }else{      //if no results are ready in the reciever, stop (this is probably the wrong way to do this)
-      if(millis()-BTNdelay > lastBTNtime){
+    }else{      //if no results are ready in the reciever
+      if(millis()-BTNdelay > lastBTNtime)  //if more than BTNdelay has prassed w/o input, brake
         brake();  //maybe instead check if no button has been pressed for half a second (or some time interval)
-        Serial.println("TIMEOUT");
-      }
+      
       depressedBTN = 0;
     }
   }
