@@ -20,7 +20,6 @@ void setUpRoverMotionRotation(){
 
   brake();
   
-  Serial.println("ROVER SET UP");
 }
 //const int POT = 0;
 
@@ -58,6 +57,8 @@ void setUpRoverMotionRotation(){
 //moves motor forward
 void forward(int rate)
 {
+  Serial.print("FFF:");
+  Serial.println(MCA1);
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, HIGH); //sets motor controls to correct direction
@@ -71,6 +72,7 @@ void forward(int rate)
 //moves motor backwards 
 void backward(int rate)
 {
+  Serial.println("BBB");
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, LOW); //sets motor controls to correct direction
@@ -83,6 +85,7 @@ void backward(int rate)
 
 void left(int rate) //rotates rover to the right
 {
+  Serial.println("LLL");
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, HIGH); //sets motor A forward
@@ -95,6 +98,7 @@ void left(int rate) //rotates rover to the right
 
 void right(int rate)
 {
+  Serial.println("RRR");
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, LOW); //sets motor A backward
@@ -108,6 +112,7 @@ void right(int rate)
 //stops motor by setting motor controls to low
 void brake()
 {
+  Serial.println("KKK");
     digitalWrite(ENA, LOW); //stops old enable pin signal
     digitalWrite(ENB, LOW); //stops old enable pin signal
     digitalWrite(MCA1, LOW); 
@@ -119,30 +124,30 @@ void brake()
 }
 
 //turns the rover to the right while moving forward
-void turnRight(int rate)
-{
-  digitalWrite(ENA, LOW); //stops old enable pin signal
-    digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MCA1, HIGH); //sets motor A & B forward
-    digitalWrite(MCA2, LOW);
-    digitalWrite(MCB1, HIGH); 
-    digitalWrite(MCB2, LOW);
-    analogWrite(ENA,rate/5); //writes velocity to enable pins
-    analogWrite(ENB, rate); //sets motor A slower than B
-}
-
-//turns the rover to the left while moving forward
-void turnLeft(int rate)
- {
-    digitalWrite(ENA, LOW); //stops old enable pin signal
-    digitalWrite(ENB, LOW); //stops old enable pin signal
-    digitalWrite(MCA1, HIGH); //sets motor A & B forward 
-    digitalWrite(MCA2, LOW);
-    digitalWrite(MCB1, HIGH);
-    digitalWrite(MCB2, LOW);
-    analogWrite(ENA, rate); //writes velocity to enable pinS
-    analogWrite(ENB, rate/5); //sets motor B slower than A
-  }
+//void turnRight(int rate)
+//{
+//  digitalWrite(ENA, LOW); //stops old enable pin signal
+//    digitalWrite(ENB, LOW); //stops old enable pin signal
+//    digitalWrite(MCA1, HIGH); //sets motor A & B forward
+//    digitalWrite(MCA2, LOW);
+//    digitalWrite(MCB1, HIGH); 
+//    digitalWrite(MCB2, LOW);
+//    analogWrite(ENA,rate/5); //writes velocity to enable pins
+//    analogWrite(ENB, rate); //sets motor A slower than B
+//}
+//
+////turns the rover to the left while moving forward
+//void turnLeft(int rate)
+// {
+//    digitalWrite(ENA, LOW); //stops old enable pin signal
+//    digitalWrite(ENB, LOW); //stops old enable pin signal
+//    digitalWrite(MCA1, HIGH); //sets motor A & B forward 
+//    digitalWrite(MCA2, LOW);
+//    digitalWrite(MCB1, HIGH);
+//    digitalWrite(MCB2, LOW);
+//    analogWrite(ENA, rate); //writes velocity to enable pinS
+//    analogWrite(ENB, rate/5); //sets motor B slower than A
+//  }
 /*Notes on the turning:
  * the faster motor pulls the slower motor closer to its speed
  * Because of that, the turn radius is very wide

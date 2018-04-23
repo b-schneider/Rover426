@@ -36,17 +36,5 @@ void loop() {
 }
 
 
-void setupFollowWall(){
-  
-}
 
-
-
-void setupFindBeacon(){
-  
-}
-
-void findBeacon(){
-  
-}
 

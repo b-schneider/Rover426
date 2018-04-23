@@ -14,19 +14,25 @@
 
 #define IRreceiverPin 2 //can be changed to any pin (do not need PWM or analog)
 
+#define BTNdelay 150 //number of microseconds to wait and see if button is held down. 150 works well by experimentation, may be able to go lower for more prescice control
+
 IRrecvPCI myReceiver(IRreceiverPin);
 IRdecodeNEC myDecoder;
 
 void setupRemoteControl(){
   myReceiver.enableIRIn(); // Start the receiver
-  Serial.println("Ready to receive IR signals");
+  Serial.println("ending remoteControl setup");
 }
 
 void remoteControl(){
+  backward(255);
   unsigned long depressedBTN = 0;
+  unsigned long lastBTNtime = 0;
   while(depressedBTN != BTN1){  //loop until power button (BTN1) is pressed
-    if (myReceiver.getResults()) {  //if the receiver has read something in
-      depressedBTN = myDecoder.decode();           //fill myDecoder.value with code of pressed button
+      if (myReceiver.getResults()) {  //if the receiver has read something in
+      myDecoder.decode();           //fill myDecoder.value with code of pressed button
+      depressedBTN = myDecoder.value;
+      lastBTNtime = millis();
       switch(depressedBTN){
         //if button 1 is pressed, terminate remote control mode
         case BTN1:
@@ -64,7 +70,7 @@ void remoteControl(){
         //if button 7 is pressed, move backward
         case BTN7:
         backward(255);
-        Serial.println('7');
+        Serial.println("BACKWARD PRESSED, GOING");
         break;
         
         //if button 8 is pressed, do nothing
@@ -83,15 +89,18 @@ void remoteControl(){
         break;
         
         default://if any other codes are sent, just stop
-        Serial.print("BRAKE: UNRECOGNIVED CODE(");
+        Serial.print("UNRECOGNIVED CODE(");
         Serial.print(depressedBTN);
         Serial.println(")\n");
-        brake();
+        //brake();
         depressedBTN = 0;           //do I need this?
       }
       myReceiver.enableIRIn();      //Restart receiver to be able to receive next code
     }else{      //if no results are ready in the reciever, stop (this is probably the wrong way to do this)
-      brake();  //maybe instead check if no button has been pressed for half a second (or some time interval)
+      if(millis()-BTNdelay > lastBTNtime){
+        brake();  //maybe instead check if no button has been pressed for half a second (or some time interval)
+        Serial.println("TIMEOUT");
+      }
       depressedBTN = 0;
     }
   }
