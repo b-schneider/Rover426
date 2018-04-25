@@ -3,7 +3,7 @@ void setup() {
 
   setUpRoverMotionRotation();
 //  setupRemoteControl();
-//  setupFollowWall();
+  setupFollowWall();
 //  setupFindBeacon();
   setupVictoryMusic();
   setupRemoteControl();
