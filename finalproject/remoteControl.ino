@@ -21,7 +21,6 @@ IRdecodeNEC myDecoder;
 
 void setupRemoteControl(){
   myReceiver.enableIRIn(); // Start the receiver
-  Serial.println("ending remoteControl setup");
 }
 
 void remoteControl(){

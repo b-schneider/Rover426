@@ -3,7 +3,7 @@ void setup() {
 
   setUpRoverMotionRotation();
 //  setupRemoteControl();
-//  setupFollowWall();
+  setupFollowWall();
 //  setupFindBeacon();
   setupVictoryMusic();
   setupRemoteControl();
@@ -28,8 +28,7 @@ void loop() {
 //  delay(1000);
 //  brake();
 
-  remoteControl();
-
+  stopAtLineTest();
   playVictoryMusic();
   
   while(1);         //delays forever, the program is over

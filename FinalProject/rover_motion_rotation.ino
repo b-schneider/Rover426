@@ -142,6 +142,20 @@ void turnLeft(int rate)
     analogWrite(ENA, rate); //writes velocity to enable pinS
     analogWrite(ENB, rate/5); //sets motor B slower than A
   }
+
+//set motor rate, from -1 (full backwards) to 1 (full forwards)
+void setRightSpeed(double rate){
+  digitalWrite(MCA1, rate>0? HIGH:LOW);
+  digitalWrite(MCA2, rate>0? LOW:HIGH);
+  analogWrite(ENA, 255*rate);
+}
+
+void setLeftSpeed(double rate){
+  digitalWrite(MCB1, rate>0? HIGH:LOW);
+  digitalWrite(MCB2, rate>0? LOW:HIGH);
+  analogWrite(ENB, 255*rate);
+}
+  
 /*Notes on the turning:
  * the faster motor pulls the slower motor closer to its speed
  * Because of that, the turn radius is very wide
